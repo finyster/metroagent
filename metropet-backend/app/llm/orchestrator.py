@@ -1,7 +1,6 @@
 import openai, json
 from .tools import get_route, get_fare, get_station_exit
-from .schemas import RouteQuery, FareQuery, StationExitInfo
-
+from ..schemas.tools import RouteQuery, FareQuery, StationExitInfo
 FUNCTION_MAP = {
     "get_route": (RouteQuery, get_route),
     "get_fare": (FareQuery, get_fare),
@@ -45,3 +44,12 @@ async def chat(messages: list[dict], user_id: str):
     else:
         # 無需 function 時就回傳
         return msg.content
+
+async def chat_stream(messages: list[dict], user_id: str):
+    resp = await openai.ChatCompletion.acreate(
+        model=model_name,
+        messages=messages,
+        stream=True
+    )
+    async for chunk in resp:
+        yield chunk
