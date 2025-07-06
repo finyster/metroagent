@@ -1,20 +1,18 @@
-from fastapi import APIRouter, Depends, WebSocket, Query
+# metropet-backend/app/routers/chat.py
+from fastapi import APIRouter
+from fastapi.responses import StreamingResponse
 from ..schemas.chat import ChatRequest
-from ..deps import get_current_user, verify_jwt
 from ..llm import orchestrator
 
 router = APIRouter()
 
 @router.post('/v1/chat')
-async def chat_endpoint(req: ChatRequest, user=Depends(get_current_user)):
-    answer = await orchestrator.chat(req.messages, user_id=user['sub'])
-    return {'reply': answer}
-
-@router.websocket('/v1/chat/stream')
-async def ws_endpoint(websocket: WebSocket, token: str = Query(...)):
-    user = verify_jwt(token)
-    await websocket.accept()
-    async for data in websocket.iter_text():
-        req = ChatRequest.parse_raw(data)
-        async for chunk in orchestrator.chat_stream(req.messages, user_id=user['sub']):
-            await websocket.send_json(chunk)
+async def chat_endpoint(req: ChatRequest):
+    """
+    這個端點接收聊天訊息，並以流式方式回傳 LLM 的回覆。
+    """
+    # 直接呼叫更新後的流式 orchestrator
+    return StreamingResponse(
+        orchestrator.chat_stream(req.messages, user_id="local-user"),
+        media_type="text/plain; charset=utf-8"
+    )

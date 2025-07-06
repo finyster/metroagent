@@ -1,3 +1,4 @@
+#metropet-backend/app/db/vector.py
 import os
 from pgvector.asyncpg import AsyncPGVector, openai_embeddings
 

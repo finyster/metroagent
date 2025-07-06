@@ -1,3 +1,4 @@
+# metropet-backend/app/schemas/__init__.py
 from .chat import ChatMessage, ChatRequest
 from .tools import RouteQuery, FareQuery, StationExitInfo
 
