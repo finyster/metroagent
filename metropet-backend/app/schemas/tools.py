@@ -15,3 +15,12 @@ class FareQuery(BaseModel):
 class StationExitInfo(BaseModel):
     station: str
     facility: Literal["elevator", "restroom", "atm", "parking"] | None = None
+
+class NextTrainQuery(BaseModel):
+    station: str = Field(..., description="查詢車站")
+
+class TimetableQuery(BaseModel):
+    station: str = Field(..., description="查詢車站")
+
+class ServiceHoursQuery(BaseModel):
+    station: str = Field(..., description="查詢首末班車時間")

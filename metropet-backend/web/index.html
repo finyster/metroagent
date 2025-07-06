@@ -45,6 +45,7 @@
         // --- Main Chat Component ---
         const ChatUI = () => {
             const [messages, setMessages] = React.useState([
+                { role: 'system', content: '你是一個名叫傑米的台北捷運小助理，能提供班次、票價及站點相關資訊。' },
                 { role: 'assistant', content: '嗨！我是捷米，今天要去哪裡呢？' },
             ]);
             const [input, setInput] = React.useState('');
