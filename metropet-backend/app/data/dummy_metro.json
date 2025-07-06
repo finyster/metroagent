@@ -1,0 +1,55 @@
+{
+  "lines": [
+    {"id": "BR", "name": "文湖線"},
+    {"id": "R", "name": "淡水信義線"},
+    {"id": "O", "name": "中和新蘆線"},
+    {"id": "G", "name": "松山新店線"},
+    {"id": "BL", "name": "板南線"},
+    {"id": "Y", "name": "環狀線"},
+    {"id": "LG", "name": "蘆洲線"}
+  ],
+  "next_trains": {
+    "台北車站": {"destination": "象山", "arrival_minutes": 2},
+    "中山站": {"destination": "北投", "arrival_minutes": 4},
+    "忠孝復興站": {"destination": "頂埔", "arrival_minutes": 3},
+    "西門站": {"destination": "南港展覽館", "arrival_minutes": 5}
+  },
+  "schedules": {
+    "台北車站": ["06:00", "06:05", "06:10", "06:15", "06:20"],
+    "中山站": ["06:01", "06:06", "06:11", "06:16", "06:21"],
+    "忠孝復興站": ["06:02", "06:07", "06:12", "06:17", "06:22"],
+    "西門站": ["06:03", "06:08", "06:13", "06:18", "06:23"]
+  },
+  "fares": {
+    "台北車站-中山站": 20,
+    "台北車站-龍山寺站": 20,
+    "台北車站-忠孝復興站": 25,
+    "中山站-西門站": 20
+  },
+  "station_exits": {
+    "台北車站": [
+      {"exit": "M1", "facility": "電梯"},
+      {"exit": "M2", "facility": "公車站"},
+      {"exit": "M3", "facility": "商場"}
+    ],
+    "西門站": [
+      {"exit": "1", "facility": "西門徒步區"},
+      {"exit": "6", "facility": "電影街"}
+    ],
+    "忠孝復興站": [
+      {"exit": "4", "facility": "百貨公司"}
+    ]
+  },
+  "routes": {
+    "台北車站-中山站": {"duration_min": 2, "transfers": 0},
+    "台北車站-忠孝復興站": {"duration_min": 6, "transfers": 0},
+    "西門站-象山站": {"duration_min": 12, "transfers": 1},
+    "中山站-忠孝復興站": {"duration_min": 8, "transfers": 0}
+  },
+  "service_hours": {
+    "台北車站": {"first_train": "06:00", "last_train": "00:15"},
+    "中山站": {"first_train": "06:01", "last_train": "00:16"},
+    "西門站": {"first_train": "06:02", "last_train": "00:17"},
+    "忠孝復興站": {"first_train": "06:03", "last_train": "00:20"}
+  }
+}
